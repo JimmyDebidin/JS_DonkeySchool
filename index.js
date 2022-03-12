@@ -1,33 +1,81 @@
 "use strict";
 
-/* Challenge 9*/
+/* Challenge 10*/
 
-/* // Welcome to DonkeyDecode, your mission is to decode the full message. Good luck
+// Here are our Astro signs provided as a string.
 
-// EX 01 -  Use a loop to remove the 'X' and use console.log to reveal the message 
-const hiddenMessage = ["X", "X", "X", "X", "W", "X", "E",  "X", "X", "X", "X", "X", "L", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "L", "X", "X", "X", "X", "X", "X", "X", "X", "X", " ","X", "X", "X", "X", "X", "X", "X", "X", "D", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "O", "X", "X", "X", "X", "X", "X", "N", "X", "X", "X", "X", "E", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", ",", "X", " ", "X"]
-/*  */
-const hiddenMessage = ["X", "X", "X", "X", "W", "X", "E",  "X", "X", "X", "X", "X", "L", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "L", "X", "X", "X", "X", "X", "X", "X", "X", "X", " ","X", "X", "X", "X", "X", "X", "X", "X", "D", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "O", "X", "X", "X", "X", "X", "X", "N", "X", "X", "X", "X", "E", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", ",", "X", " ", "X"]
-let revealMessage = '';
-for (let i = 0; i < hiddenMessage.length; i++){
-    if (hiddenMessage[i] !== "X") {
-        revealMessage = revealMessage + hiddenMessage[i];
-    }
-}
+const aries = `♈`,
+  taurus = `♉`,
+  gemini = `♊`,
+  cancer = `♋`,
+  leo = `♌`,
+  virgo = `♍`,
+  libra = `♎`,
+  scorpio = `♏`,
+  sagittarius = `♐`,
+  capricorn = `♑`,
+  aquarius = `♒`,
+  pisces = `♓︎`;
 
-console.log(revealMessage);
+// In Western Astrology there are 12 signs, organized by Earth Elements (Eart, Water, Air, Fire)  //
+// You are going to manipulate the following arrays along with this challenge:  //
 
-// EX 02 - Remove the 'X' and the even numbers
-// Hint: As this is a string you should find a way to convert into an array.
+const fireSigns = [aries, leo];
+const earthSigns = [taurus, virgo, capricorn, sagittarius];
+const airSigns = [gemini, libra, aquarius];
+const waterSigns = [cancer, scorpio, pisces];
 
-const hiddenCode = "XXXXXXXXXXXXXXXXXXXXXXXXXXXCXXXXXXXOXXXXXDXXXXXXXXXXXXXXXEXXXX XXXXXXXXXXXXXXX:X0XXXXXXX2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3XXXXXX2XXXXXXXXX2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX4XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX6XXXXXXXXXXXXXXX6XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX7XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX2XXXXXXXXXX8XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX8XXXXXXXXXXX4XXXXXXXXXXXX6XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX4XXXXXXXXXXXXXXXXXXX9XXXX9XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX2XXX4XXXXXXXXXXX6XXXXXXXXX2XXXXXXXX3XXXXXXXX2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX4XXXXX"
-let revealCode = '';
-const arrayHiddenCode = (hiddenCode.split(''));
+/* –––––––––––––––––– */
 
-for (let i = 0; i < arrayHiddenCode.length; i++) {
-    if (arrayHiddenCode[i] !== "X" && arrayHiddenCode[i] % 2 !== 0) {
-        revealCode = revealCode + arrayHiddenCode[i];
-    }
-}
+/*  🏁 Add one final element to an array 
+    
+    Sagittarius is missing from fire signs please add it at the END of the array
+    and verify the result.
 
-console.log(revealCode);
+*/
+
+fireSigns.push('♐');
+
+
+console.log(
+  fireSigns[fireSigns.length - 1] === "♐"
+    ? "Good Answer ✅"
+    : "Wrong Answer ❌"
+);
+
+
+/* 🏁 Remove the last element of an array
+
+      Sagittarius should not be on earth Signs, please remove Sagittarius from the array, and verify
+      the result.
+*/
+
+earthSigns.pop();
+
+console.log(earthSigns[earthSigns.length - 1] !== "♐" ? "Good Answer ✅" : "Wrong Answer ❌");
+
+/* 
+    🏁  Initialize an empty array in javascript
+     Please initialize an empty array and store it in a let variable called zodiacSigns
+
+ */
+let zodiacSigns = []; // ✒️ Write your code here
+
+/*  
+     🏁 🏁 Merge Fire, Earth, Water, and Air arrays into zodiacSigns (in that order), using the concat methods 
+*/
+
+zodiacSigns = zodiacSigns.concat(fireSigns, earthSigns, waterSigns, airSigns);
+
+
+console.log(
+  (zodiacSigns !== null && zodiacSigns.toString() === "♈,♌,♐,♉,♍,♑,♋,♏,♓︎,♊,♎,♒")
+    ? "Good Answer ✅"
+    : "Wrong Answer ❌"
+);
+/*  
+    🏁 Please print dynamically in console how many elements you have now in the zodiacSigns array
+ */
+
+console.log(`There is ${zodiacSigns.length} signs in the zodiac`);
+
