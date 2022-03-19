@@ -1,45 +1,36 @@
 "use strict";
 
-/* Challenge 8*/
+/* Challenge 11*/
 
+function Person(firstname, weight, height) {
+    return {
+      firstname,
+      weight,
+      height,
+      imc: weight / (height * height)
+    }    
+};
 
+const bernard1 = new Person ("Bernard", 78, 1.69);
+const bernard2 = new Person("Bernard", 95, 1.88);
+const marcel1 = new Person("Marcel", 92, 1.95);
+const marcel2 = new Person("Marcel", 85, 1.76);
+let person1;
+let person2;
 
-const calcTip = (notes) => {
-    if (notes >= 50 && notes <= 300) {
-        let tips = (notes * 0.15);
-        return(tips);
-
+const higherImc = (person1, person2) => {
+  let message;
+  if (person1.imc > person2.imc) {
+  message = `L'IMC de ${person1.firstname} (${person1.imc}) est plus élevé que celui de ${person2.firstname} (${person2.imc}).`;
+  } else if (person1.imc === person2.imc) {
+  message = `L'IMC des 2 personnes sont équivalente`;
+  } else if (person2.imc > person1.imc) {
+  message = `L'IMC de ${person2.firstname} (${person2.imc}) est plus élevé que celui de ${person1.firstname} (${person1.imc}).`;
   } else {
-    let tips = (notes * 0.20);
-    return(tips);  
-    }
+  message = `Les paramètres de la fonction sont mal définis`;
+  }
+  console.log(message);
 }
 
-const notes = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
-const tips = [];
-const totals = [];
-
-/* Send data in arrays */
-
-for (let i = 0; i < notes.length; i++) {
-    calcTip(notes[i]);
-    tips.push(calcTip(notes[i]));
-    totals.push(calcTip(notes[i]) + notes[i]);
-}
-
-console.log(notes, tips, totals);
-
-/* returns the average of an array */
-
-let sum = 0;
-const calcAverage = (array) => {
-    for (let i = 0; i < array.length; i++) {
-    sum = sum + array[i]; 
-    }
-   return ((sum / array.length));
-}
-
-console.log(calcAverage(totals));
-
-
-
+higherImc(marcel1, bernard1);
+higherImc(bernard2, marcel2);
